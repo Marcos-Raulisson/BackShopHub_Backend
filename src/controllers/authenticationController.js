@@ -1,3 +1,3 @@
 exports.auth = (req, res) => {
-  res.status(200).json({ message: 'Hello Backend!' });
+  res.status(200).json({ message: 'Ok' });
 };

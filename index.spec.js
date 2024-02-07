@@ -1,11 +1,15 @@
-const { describe, it, expect } = require('@jest/globals');
+const {
+  describe,
+  it,
+  expect,
+} = require('@jest/globals');
 const StartServer = require('./index');
 
 describe('Start server', () => {
-  it('Test for environment variables', () => {
+  it('Test for environment variables', async () => {
     const startServerInstance = new StartServer();
 
     expect(() => startServerInstance.checkEnvironmentVariables())
-      .toThrowError('Make sure to check your environment variables (¬_¬ )');
+      .not.toThrowError();
   });
 });

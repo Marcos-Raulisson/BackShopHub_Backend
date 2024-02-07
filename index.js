@@ -1,4 +1,5 @@
 require('dotenv').config();
+const app = require('./src/config/setupServer');
 
 function StartServer() {
   this.enviromentVariables = {
@@ -8,10 +9,15 @@ function StartServer() {
     database_password: process.env.DATABASE_PASSWORD,
     database_name: process.env.DATABASE_NAME,
   };
+
+  if (require.main === module) {
+    this.init();
+  }
 }
 
 StartServer.prototype.init = function () {
   this.checkEnvironmentVariables();
+  this.start();
 };
 
 StartServer.prototype.checkEnvironmentVariables = function () {
@@ -24,4 +30,15 @@ StartServer.prototype.checkEnvironmentVariables = function () {
   }
 };
 
+StartServer.prototype.start = function () {
+  app.listen(process.env.SERVER_PORT, () => {
+    console.log(`Server running on port ${process.env.SERVER_PORT}`);
+  });
+};
+
 module.exports = StartServer;
+
+if (require.main === module) {
+  // eslint-disable-next-line no-unused-vars
+  const startServerInstance = new StartServer();
+}

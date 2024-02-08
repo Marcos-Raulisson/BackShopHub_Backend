@@ -1,7 +1,10 @@
 require('dotenv').config();
 const app = require('./src/config/setupServer');
+const Database = require('./src/config/database');
 
 function StartServer() {
+  Database.call(this);
+
   this.enviromentVariables = {
     serverPort: process.env.SERVER_PORT,
     database_host: process.env.DATABASE_HOST,
@@ -15,9 +18,18 @@ function StartServer() {
   }
 }
 
-StartServer.prototype.init = function () {
-  this.checkEnvironmentVariables();
-  this.start();
+StartServer.prototype = Object.create(Database.prototype);
+
+StartServer.prototype.init = async function () {
+  try {
+    this.checkEnvironmentVariables();
+    await this.checkDatabaseConnection();
+    this.start();
+  } catch (error) {
+    console.error(`Server inicialization failed at ${new Date().toLocaleString()}
+${error.message}`);
+    process.exit(1);
+  }
 };
 
 StartServer.prototype.checkEnvironmentVariables = function () {
@@ -25,14 +37,28 @@ StartServer.prototype.checkEnvironmentVariables = function () {
 
   for (let i = 0; i < keys.length; i += 1) {
     if (!this.enviromentVariables[keys[i]]) {
-      throw new Error('Make sure to check your environment variables (¬_¬ )');
+      throw new Error('ENVIROMENT VARIABLES ERROR: Make sure to check your environment variables (¬_¬ )');
     }
+  }
+};
+
+StartServer.prototype.checkDatabaseConnection = async function () {
+  try {
+    const connection = await this.openConnection();
+    if (connection) {
+      await this.closeConnection(connection);
+    }
+  } catch (error) {
+    throw Error(error.message);
   }
 };
 
 StartServer.prototype.start = function () {
   app.listen(process.env.SERVER_PORT, () => {
-    console.log(`Server running on port ${process.env.SERVER_PORT}`);
+    console.log('Server running');
+    console.log(`Access: http://localhost:${process.env.SERVER_PORT}`);
+    console.log('');
+    console.log('Happy Hacking!!!');
   });
 };
 

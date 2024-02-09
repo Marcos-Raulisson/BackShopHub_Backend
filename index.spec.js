@@ -7,7 +7,7 @@ const {
 const Database = require('./src/config/database');
 const StartServer = require('./index');
 
-describe('Start server', () => {
+describe('Start startup', () => {
   const databaseInstance = new Database();
   const startServerInstance = new StartServer();
 
@@ -21,6 +21,6 @@ describe('Start server', () => {
   });
 
   afterAll(async () => {
-    databaseInstance.closePool();
+    databaseInstance.closeConnection();
   });
 });

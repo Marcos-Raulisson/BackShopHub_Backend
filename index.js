@@ -44,10 +44,8 @@ StartServer.prototype.checkEnvironmentVariables = function () {
 
 StartServer.prototype.checkDatabaseConnection = async function () {
   try {
-    const connection = await this.openConnection();
-    if (connection) {
-      await this.closeConnection(connection);
-    }
+    await this.openConnection();
+    await this.closeConnection();
   } catch (error) {
     throw Error(error.message);
   }
@@ -64,7 +62,5 @@ StartServer.prototype.start = function () {
 
 module.exports = StartServer;
 
-if (require.main === module) {
-  // eslint-disable-next-line no-unused-vars
-  const startServerInstance = new StartServer();
-}
+// eslint-disable-next-line no-unused-vars
+const startServerInstance = new StartServer();

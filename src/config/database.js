@@ -21,24 +21,24 @@ function Database() {
 
 Database.prototype.openConnection = async function () {
   try {
-    await this.connection.getConnection();
+    return await this.connection.getConnection();
   } catch (error) {
     throw Error(`DATABASE ERROR: ${error.message}`);
   }
 };
 
-Database.prototype.closeConnection = async function (connection) {
+Database.prototype.closeConnection = async function () {
   try {
-    if (connection) {
-      await connection.release();
-    }
+    await this.connection.end();
   } catch (error) {
     throw new Error(`DATABASE ERROR: ${error.message}`);
   }
 };
 
-Database.prototype.closePool = function () {
-  this.connection.end();
+Database.prototype.releaseConnection = async function (connection) {
+  if (connection) {
+    await this.connection.release(connection);
+  }
 };
 
 module.exports = Database;

@@ -56,7 +56,6 @@ StartServer.prototype.start = function () {
     console.log('Server running');
     console.log(`Access: http://localhost:${process.env.SERVER_PORT}`);
     console.log('');
-    console.log('Happy Hacking!!!');
   });
 };
 

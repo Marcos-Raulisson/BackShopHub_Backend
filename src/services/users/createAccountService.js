@@ -1,5 +1,6 @@
 const PasswordValidator = require('password-validator');
 const validator = require('validator');
+const bcrypt = require('bcrypt');
 
 function CreateAccount(name, email, password, confirmPassword) {
   this.name = name;
@@ -13,6 +14,7 @@ function CreateAccount(name, email, password, confirmPassword) {
 CreateAccount.prototype.init = function () {
   this.validateEmail();
   this.validadePassword();
+  this.registerAccount();
 };
 
 CreateAccount.prototype.validateEmail = function () {
@@ -26,25 +28,36 @@ CreateAccount.prototype.validadePassword = function () {
     const schema = new PasswordValidator();
 
     schema
-      .is().min(6, 'The password must contain at least 6 characters.')
-      .is().max(100, 'The password must contain a maximum of 100 characters.')
+      .is().min(6)
+      .is().max(100)
       .has()
-      .uppercase(1, 'The password must contain uppercase letters.')
+      .uppercase()
       .has()
-      .lowercase(1, 'The password must contain lowercase letters.')
+      .lowercase()
       .has()
-      .digits(2, 'Password must contain at least 2 numbers.');
+      .digits();
 
-    const validationResult = schema.validate(this.password, { details: true });
+    const validationResult = schema.validate(this.password);
 
-    for (let i = 0; i < validationResult.length; i += 1) {
-      if (validationResult[i].message) {
-        throw new Error(validationResult[i].message);
-      }
+    if (!validationResult) {
+      throw new Error('Invalid password');
     }
   } else {
     throw new Error('Passwords must be the same.');
   }
+};
+
+CreateAccount.prototype.createPasswordHash = function (password) {
+  const saltRounds = 14;
+
+  const salt = bcrypt.genSaltSync(saltRounds);
+  const hash = bcrypt.hashSync(password, salt);
+
+  return hash;
+};
+
+CreateAccount.prototype.registerAccount = function () {
+  // Continue...
 };
 
 module.exports = CreateAccount;

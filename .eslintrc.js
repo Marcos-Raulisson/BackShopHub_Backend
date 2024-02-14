@@ -25,5 +25,6 @@ module.exports = {
     'no-console': 'off',
     'import/no-extraneous-dependencies': 'off',
     'func-names': 'off',
+    'no-sequences': 'off',
   },
 };

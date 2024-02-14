@@ -1,11 +1,12 @@
 const express = require('express');
 
-const routeAuthentication = require('../routes/authentication');
+const users = require('../routes/users/users');
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(routeAuthentication);
+
+app.use(users);
 
 module.exports = app;

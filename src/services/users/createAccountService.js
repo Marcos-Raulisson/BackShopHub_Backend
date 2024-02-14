@@ -1,6 +1,11 @@
+/* eslint-disable no-unused-vars */
 const PasswordValidator = require('password-validator');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
+const { v4: uuidv4 } = require('uuid');
+
+const RegisterAccount = require('../../models/users/registerAccountModel');
+const Nodemailer = require('../nodemailerService');
 
 function CreateAccount(name, email, password, confirmPassword) {
   this.name = name;
@@ -57,7 +62,15 @@ CreateAccount.prototype.createPasswordHash = function (password) {
 };
 
 CreateAccount.prototype.registerAccount = function () {
-  // Continue...
+  const account = {
+    name: this.name,
+    email: this.email,
+    password: this.createPasswordHash(this.password),
+    tokenUuid: uuidv4(),
+  };
+
+  const registerAccount = new RegisterAccount(account);
+  const nodemail = new Nodemailer(account, 'Welcome Test', `Olá ${this.name}, seja bem vindo a BackShopHub.`);
 };
 
 module.exports = CreateAccount;

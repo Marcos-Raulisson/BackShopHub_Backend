@@ -1,4 +1,4 @@
-# E-Commerce API
+# Visão geral
 
 Este é meu projeto pessoal como freelancer, onde a API cuida do gerenciamento de produtos, simplifica o checkout, organiza o fluxo do carrinho de compras da loja online e se conecta às APIs Melhor Envio e Pagbank para logística e processamento de pagamento. Aqui, eu crio e moldo a experiência do meu comércio online.
 
@@ -11,7 +11,7 @@ Este é meu projeto pessoal como freelancer, onde a API cuida do gerenciamento d
 
 ## Endpoints
 
-- `GET http://localhost:3000/users/create-account`: criar conta.
+- `GET http://localhost:3000/users/create-account`: Rota para criar uma conta para usuários.
 
 ## Requisitos
 
@@ -48,7 +48,7 @@ Anote as seguintes informações do seu inbox no Mailtrap:
 Crie um arquivo .env na raiz do projeto e preencha as variáveis de ambiente com as informações do Mailtrap e do banco de dados:
 
 ```ini
-# Configurações do Servidor
+# porta em que o servidor será executado
 SERVER_PORT=3000
 
 # Configurações do Banco de Dados
@@ -62,7 +62,7 @@ MAIL_HOST=
 MAIL_PORT=
 MAIL_USER=
 MAIL_PASS=
-MAIL_FROM=
+MAIL_FROM= # Email remetente
 ```
 
 Preencha as variáveis acima de acordo com os dados do seu inbox no Mailtrap e do seu banco de dados.
@@ -101,4 +101,4 @@ Sua contribuição é bem-vinda! Se você deseja melhorar a BackShopHub API ou c
 
 Se você encontrar algum problema ou tiver sugestões, por favor, abra uma issue. Certifique-se de incluir detalhes sobre como reproduzir o problema e seu ambiente.
 
-Agradecemos a sua contribuição para tornar a BackShopHub API ainda melhor!
+Agradecemos a sua contribuição para tornar a BackShopHub ainda melhor!

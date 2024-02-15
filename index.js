@@ -10,7 +10,11 @@ function StartServer() {
     database_host: process.env.DATABASE_HOST,
     database_user: process.env.DATABASE_USER,
     database_password: process.env.DATABASE_PASSWORD,
-    database_name: process.env.DATABASE_NAME,
+    mail_host: process.env.MAIL_HOST,
+    mail_port: process.env.MAIL_PORT,
+    mail_user: process.env.MAIL_USER,
+    mail_pass: process.env.MAIL_PASS,
+    mail_from: process.env.MAIL_FROM,
   };
 
   if (require.main === module) {

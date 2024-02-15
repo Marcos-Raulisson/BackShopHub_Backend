@@ -1,6 +1,6 @@
 ## E-Commerce API
 
-API para gerenciar produtos, pedidos e usuários em plataforma de e-commerce.
+Este é meu projeto pessoal como freelancer, onde a API cuida do gerenciamento de produtos, simplifica o checkout, organiza o fluxo do carrinho de compras da loja online e se conecta às APIs Melhor Envio e Pagbank para logística e processamento de pagamento. Aqui, eu crio e moldo a experiência do meu comércio online.
 
 ## Sumário
 

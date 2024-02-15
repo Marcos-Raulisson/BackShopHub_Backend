@@ -79,7 +79,7 @@ Sua contribuição é bem-vinda! Se você deseja melhorar a BackShopHub API ou c
 
 - **Faça Fork do Repositório:** Clique no botão "Fork" no canto superior direito desta página para criar uma cópia do projeto no seu perfil.
 
-- **Clone o Repositório:** No terminal, clone o repositório do seu fork utilizando o comando:
+- **Clone o Repositório:** No terminal, clone o repositório do seu fork.
 - **Crie uma Branch:** Crie uma nova branch para trabalhar nas suas alterações:
 
 ```bash

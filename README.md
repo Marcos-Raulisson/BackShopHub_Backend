@@ -1,4 +1,4 @@
-## E-Commerce API
+# E-Commerce API
 
 Este é meu projeto pessoal como freelancer, onde a API cuida do gerenciamento de produtos, simplifica o checkout, organiza o fluxo do carrinho de compras da loja online e se conecta às APIs Melhor Envio e Pagbank para logística e processamento de pagamento. Aqui, eu crio e moldo a experiência do meu comércio online.
 
@@ -7,11 +7,7 @@ Este é meu projeto pessoal como freelancer, onde a API cuida do gerenciamento d
 - [Endpoints](#endpoints)
 - [Requisitos](#requisitos)
 - [Configuração](#configuração)
-- [Autenticação](#autenticação)
-- [Exemplos de uso](#exemplos-de-uso)
-- [Respostas de Erro](#respostas-de-erro)
 - [Contribuição](#contribuição)
-- [Licença](#licença)
 
 ## Endpoints
 
@@ -84,11 +80,6 @@ Sua contribuição é bem-vinda! Se você deseja melhorar a BackShopHub API ou c
 - **Faça Fork do Repositório:** Clique no botão "Fork" no canto superior direito desta página para criar uma cópia do projeto no seu perfil.
 
 - **Clone o Repositório:** No terminal, clone o repositório do seu fork utilizando o comando:
-
-```bash
-  git clone https://github.com/Carlos-Eduardo5Qs/BackShopHub_Backend.git
-```
-
 - **Crie uma Branch:** Crie uma nova branch para trabalhar nas suas alterações:
 
 ```bash
@@ -106,7 +97,7 @@ Sua contribuição é bem-vinda! Se você deseja melhorar a BackShopHub API ou c
 
 - **Abra um Pull Request:** No seu repositório no GitHub, abra um Pull Request para a branch principal do projeto. Certifique-se de incluir uma descrição clara das alterações que você fez.
 
-## Como reporta problemas
+## Como reportar problemas
 
 Se você encontrar algum problema ou tiver sugestões, por favor, abra uma issue. Certifique-se de incluir detalhes sobre como reproduzir o problema e seu ambiente.
 

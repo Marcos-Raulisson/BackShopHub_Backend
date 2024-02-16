@@ -1,12 +1,12 @@
 const express = require('express');
 
-const users = require('../routes/users/users');
+const createAccountRoute = require('../routes/users/createAccountRoute');
 
 const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(users);
+app.use(createAccountRoute);
 
 module.exports = app;

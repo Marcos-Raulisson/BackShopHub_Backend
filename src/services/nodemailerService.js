@@ -2,10 +2,18 @@ require('dotenv').config();
 
 const nodemailer = require('nodemailer');
 
-function Nodemailer({ email }, subject, body) {
+function Nodemailer(name, email, subject, body) {
+  this.name = name;
   this.to = email;
   this.subject = subject;
   this.body = body;
+
+  this.mailOptions = {
+    from: process.env.MAIL_FROM,
+    to: this.to,
+    subject: this.subject,
+    text: this.body,
+  };
 
   this.init();
 }
@@ -28,11 +36,10 @@ Nodemailer.prototype.configureTransporter = function () {
 };
 
 Nodemailer.prototype.send = async function () {
-  this.configureTransporter().sendMail({
-    from: process.env.MAIL_FROM,
-    to: this.to,
-    subject: this.subject,
-    text: this.body,
+  this.configureTransporter().sendMail(this.mailOptions, (error) => {
+    if (error) {
+      throw new Error('Certifique-se de que o endereço de e-mail fornecido está correto e acessível. Este e-mail é crucial para receber informações importantes, como recuperação de senha e atualizações de segurança. Se você não receber a mensagem de boas-vindas, verifique sua pasta de spam ou considere registrar-se novamente com um endereço de e-mail válido. Lembre-se de que o e-mail é uma parte essencial da segurança da sua conta.');
+    }
   });
 };
 

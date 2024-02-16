@@ -2,7 +2,6 @@
 const PasswordValidator = require('password-validator');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
-const { v4: uuidv4 } = require('uuid');
 
 const RegisterAccount = require('../../models/users/registerAccountModel');
 const Nodemailer = require('../nodemailerService');
@@ -62,15 +61,15 @@ CreateAccount.prototype.createPasswordHash = function (password) {
 };
 
 CreateAccount.prototype.registerAccount = function () {
-  const account = {
-    name: this.name,
-    email: this.email,
-    password: this.createPasswordHash(this.password),
-    tokenUuid: uuidv4(),
-  };
+  const account = [
+    this.name,
+    this.email,
+    this.createPasswordHash(this.password),
+  ];
+
+  const nodemailer = new Nodemailer(this.name, this.email, 'Boas vindas', `Saudações, ${this.name}, É um prazer recebê-lo(a) como nosso cliente. Esperamos que tenha uma experiência incrível com os nossos serviços e produtos.`);
 
   const registerAccount = new RegisterAccount(account);
-  const nodemail = new Nodemailer(account, 'Welcome Test', `Olá ${this.name}, seja bem vindo a BackShopHub.`);
 };
 
 module.exports = CreateAccount;

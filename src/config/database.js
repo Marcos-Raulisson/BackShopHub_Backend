@@ -35,9 +35,9 @@ Database.prototype.closeConnection = async function () {
   }
 };
 
-Database.prototype.releaseConnection = async function (connection) {
+Database.prototype.releaseConnection = function (connection) {
   if (connection) {
-    await this.connection.release(connection);
+    connection.release(connection);
   }
 };
 

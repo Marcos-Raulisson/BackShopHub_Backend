@@ -1,14 +1,9 @@
 const Database = require('../../config/database');
 
-function RegisterAccount({
-  name, email, password, tokenUuid,
-}) {
+function RegisterAccount(account) {
   Database.call(this);
 
-  this.name = name;
-  this.email = email;
-  this.password = password;
-  this.tokenUuid = tokenUuid;
+  this.account = account;
 
   this.init();
 }
@@ -19,8 +14,16 @@ RegisterAccount.prototype.init = function () {
   this.register();
 };
 
-RegisterAccount.prototype.register = function () {
-// Continue...
+RegisterAccount.prototype.register = async function () {
+  const connection = await this.openConnection();
+  try {
+    const sql = 'INSERT INTO user_profile (user_name, email, password_) VALUES (?,?,?)';
+    await connection.execute(sql, this.account);
+  } catch (error) {
+    throw new Error(`DATABASE ERROR: ${error.message}`);
+  } finally {
+    this.releaseConnection(connection);
+  }
 };
 
 module.exports = RegisterAccount;

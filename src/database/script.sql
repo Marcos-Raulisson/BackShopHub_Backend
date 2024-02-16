@@ -14,7 +14,5 @@ CREATE TABLE user_profile (
   birth DATE,
   img_url VARCHAR(255),
   access_level ENUM('adm', 'client') DEFAULT 'client',
-  config_2FA ENUM('yes', 'no') DEFAULT 'no',
-  token VARCHAR(255),
-  verified BOOLEAN DEFAULT false
+  config_2FA ENUM('yes', 'no') DEFAULT 'no'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;

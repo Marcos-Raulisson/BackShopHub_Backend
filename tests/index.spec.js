@@ -4,8 +4,8 @@ const {
   expect,
   afterAll,
 } = require('@jest/globals');
-const Database = require('./src/config/database');
-const StartServer = require('./index');
+const Database = require('../src/config/database');
+const StartServer = require('../index');
 
 describe('Start startup', () => {
   const databaseInstance = new Database();

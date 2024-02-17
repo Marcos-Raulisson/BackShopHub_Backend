@@ -56,9 +56,13 @@ StartServer.prototype.checkDatabaseConnection = async function () {
 };
 
 StartServer.prototype.start = function () {
-  app.listen(process.env.SERVER_PORT, () => {
+  this.startServerListening(process.env.SERVER_PORT);
+};
+
+StartServer.prototype.startServerListening = function (port) {
+  app.listen(port, () => {
     console.log('Server running');
-    console.log(`Access: http://localhost:${process.env.SERVER_PORT}`);
+    console.log(`Access: http://localhost:${port}`);
     console.log('');
   });
 };

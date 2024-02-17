@@ -36,11 +36,7 @@ Nodemailer.prototype.configureTransporter = function () {
 };
 
 Nodemailer.prototype.send = async function () {
-  this.configureTransporter().sendMail(this.mailOptions, (error) => {
-    if (error) {
-      console.log('Certifique-se de que o endereço de e-mail fornecido está correto e acessível. Este e-mail é crucial para receber informações importantes, como recuperação de senha e atualizações de segurança. Se você não receber a mensagem de boas-vindas, verifique sua pasta de spam ou considere registrar-se novamente com um endereço de e-mail válido. Lembre-se de que o e-mail é uma parte essencial da segurança da sua conta.');
-    }
-  });
+  await this.configureTransporter().sendMail(this.mailOptions);
 };
 
 module.exports = Nodemailer;

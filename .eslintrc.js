@@ -26,5 +26,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'func-names': 'off',
     'no-sequences': 'off',
+    'no-else-return': 'off',
+    'consistent-return': 'off',
   },
 };

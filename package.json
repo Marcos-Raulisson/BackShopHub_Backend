@@ -6,7 +6,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "jest --passWithNoTests --detectOpenHandles",
-    "dev": "nodemon /server.js localhost 3000 --ignore "
+    "dev": "nodemon /server.js localhost 3000"
   },
   "author": "Eduardo",
   "license": "MIT",

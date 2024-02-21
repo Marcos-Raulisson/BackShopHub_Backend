@@ -1,14 +1,14 @@
 const Database = require('../../config/Database');
 
-function AuthModel(email) {
+function SearchUser(email) {
   Database.call(this);
 
   this.email = email;
 }
 
-AuthModel.prototype = Object.create(Database.prototype);
+SearchUser.prototype = Object.create(Database.prototype);
 
-AuthModel.prototype.findUser = async function () {
+SearchUser.prototype.find = async function () {
   const connection = await this.openConnection();
   try {
     const sql = 'select * from user_profile where email = ?';
@@ -25,4 +25,4 @@ AuthModel.prototype.findUser = async function () {
   }
 };
 
-module.exports = AuthModel;
+module.exports = SearchUser;

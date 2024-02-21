@@ -5,7 +5,7 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-const AuthModel = require('../../models/users/SearchUserModel');
+const SearchUser = require('../../models/users/SearchUserModel');
 
 function AuthService(email, password) {
   this.email = email;
@@ -46,8 +46,8 @@ AuthService.prototype.validatePassword = function () {
 };
 
 AuthService.prototype.generateToken = async function () {
-  const authModel = new AuthModel(this.email);
-  const user = await authModel.findUser();
+  const searhUser = new SearchUser(this.email);
+  const user = await searhUser.find();
 
   if (!user) {
     throw new Error('User not found.');
@@ -58,7 +58,7 @@ AuthService.prototype.generateToken = async function () {
     if (!comparePassword) {
       throw new Error('Incorrect password.');
     } else {
-      const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, { expiresIn: '5m' });
+      const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, { expiresIn: 300 });
       return token;
     }
   }

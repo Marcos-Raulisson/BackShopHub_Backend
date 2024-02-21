@@ -3,8 +3,8 @@ const PasswordValidator = require('password-validator');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 
-const RegisterAccount = require('../../models/users/registerAccountModel');
-const Nodemailer = require('../nodemailerService');
+const RegisterAccount = require('../../models/users/CreateAccountModel');
+const Nodemailer = require('../NodemailerService');
 
 function CreateAccount(name, email, password, confirmPassword) {
   this.name = name;

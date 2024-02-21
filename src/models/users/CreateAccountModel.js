@@ -1,4 +1,4 @@
-const Database = require('../../config/database');
+const Database = require('../../config/Database');
 
 function RegisterAccount(account) {
   Database.call(this);

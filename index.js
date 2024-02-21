@@ -1,6 +1,6 @@
 require('dotenv').config();
 const app = require('./src/config/setupServer');
-const Database = require('./src/config/database');
+const Database = require('./src/config/Database');
 
 function StartServer() {
   Database.call(this);

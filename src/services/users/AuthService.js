@@ -5,7 +5,7 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
-const AuthModel = require('../../models/users/authModel');
+const AuthModel = require('../../models/users/SearchUserModel');
 
 function AuthService(email, password) {
   this.email = email;

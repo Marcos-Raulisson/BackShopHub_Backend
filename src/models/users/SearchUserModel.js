@@ -1,4 +1,4 @@
-const Database = require('../../config/database');
+const Database = require('../../config/Database');
 
 function AuthModel(email) {
   Database.call(this);
@@ -13,10 +13,10 @@ AuthModel.prototype.findUser = async function () {
   try {
     const sql = 'select * from user_profile where email = ?';
     const [rows] = await connection.execute(sql, [this.email]);
-    if (rows.length > 0) {
-      return rows[0];
-    } else {
+    if (!rows.length > 0) {
       return false;
+    } else {
+      return rows[0];
     }
   } catch (error) {
     console.log(error.message);

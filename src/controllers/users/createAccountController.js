@@ -1,4 +1,4 @@
-const CreateAccount = require('../../services/users/createAccountService');
+const CreateAccount = require('../../services/users/CreateAccountService');
 
 exports.createAccount = (req, res) => {
   const {

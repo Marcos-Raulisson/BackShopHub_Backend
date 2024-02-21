@@ -63,9 +63,12 @@ MAIL_PORT=
 MAIL_USER=
 MAIL_PASS=
 MAIL_FROM= # Email remetente
+
+# Senha para assinar e verificar tokens JWT
+SECRET_KEY=
 ```
 
-Preencha as variáveis acima de acordo com os dados do seu inbox no Mailtrap e do seu banco de dados.
+Preencha as variáveis acima de acordo com os dados do seu inbox no Mailtrap, do seu banco de dados e configure uma senha para assinar e verificar tokens JWT.
 
 ### 4. Configurar o banco de dados
 

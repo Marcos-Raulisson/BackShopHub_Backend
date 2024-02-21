@@ -1,5 +1,9 @@
+require('dotenv').config();
+
 const PasswordValidator = require('password-validator');
 const validator = require('validator');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 const AuthModel = require('../../models/users/authModel');
 
@@ -11,7 +15,8 @@ function AuthService(email, password) {
 AuthService.prototype.init = async function () {
   this.validateEmail();
   this.validatePassword();
-  await this.login();
+  const token = await this.generateToken();
+  return token;
 };
 
 AuthService.prototype.validateEmail = function () {
@@ -40,14 +45,22 @@ AuthService.prototype.validatePassword = function () {
   }
 };
 
-AuthService.prototype.login = async function () {
-  const authModel = new AuthModel(this.email, this.password);
+AuthService.prototype.generateToken = async function () {
+  const authModel = new AuthModel(this.email);
   const user = await authModel.findUser();
 
   if (!user) {
     throw new Error('User not found.');
   } else {
-    console.log(user);
+    // eslint-disable-next-line no-underscore-dangle
+    const comparePassword = await bcrypt.compare(this.password, user.password_);
+
+    if (!comparePassword) {
+      throw new Error('Incorrect password.');
+    } else {
+      const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, { expiresIn: '5m' });
+      return token;
+    }
   }
 };
 

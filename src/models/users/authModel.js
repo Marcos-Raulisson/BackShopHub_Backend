@@ -1,10 +1,9 @@
 const Database = require('../../config/database');
 
-function AuthModel(email, password) {
+function AuthModel(email) {
   Database.call(this);
 
   this.email = email;
-  this.password = password;
 }
 
 AuthModel.prototype = Object.create(Database.prototype);

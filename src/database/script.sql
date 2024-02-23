@@ -5,6 +5,7 @@ USE DATABASE BackShopHubAPI;
 CREATE TABLE user_profile (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   status_ ENUM('online', 'offline') DEFAULT 'offline',
+  nick VARCHAR(60) NOT NULL,
   user_name VARCHAR(60) NOT NULL,
   email VARCHAR(60) NOT NULL,
   password_ VARCHAR(100) NOT NULL,

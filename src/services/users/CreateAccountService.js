@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 
 const RegisterAccount = require('../../models/users/CreateAccountModel');
 const Nodemailer = require('../NodemailerService');
+const generateNickname = require('../../utils/generateNickname');
 
 function CreateAccount(name, email, password, confirmPassword) {
   this.name = name;
@@ -62,6 +63,7 @@ CreateAccount.prototype.createPasswordHash = function (password) {
 
 CreateAccount.prototype.registerAccount = function () {
   const account = [
+    generateNickname(),
     this.name,
     this.email,
     this.createPasswordHash(this.password),

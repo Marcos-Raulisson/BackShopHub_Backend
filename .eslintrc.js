@@ -28,5 +28,6 @@ module.exports = {
     'no-sequences': 'off',
     'no-else-return': 'off',
     'consistent-return': 'off',
+    'no-unused-vars': 'off',
   },
 };

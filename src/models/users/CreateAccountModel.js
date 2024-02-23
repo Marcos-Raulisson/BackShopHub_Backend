@@ -17,7 +17,7 @@ RegisterAccount.prototype.init = function () {
 RegisterAccount.prototype.register = async function () {
   const connection = await this.openConnection();
   try {
-    const sql = 'INSERT INTO user_profile (user_name, email, password_) VALUES (?,?,?)';
+    const sql = 'INSERT INTO user_profile (nick, user_name, email, password_) VALUES (?,?,?,?)';
     await connection.execute(sql, this.account);
   } catch (error) {
     throw new Error(`DATABASE ERROR: ${error.message}`);

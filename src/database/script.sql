@@ -17,3 +17,13 @@ CREATE TABLE user_profile (
   access_level ENUM('adm', 'client') DEFAULT 'client',
   config_2FA ENUM('yes', 'no') DEFAULT 'no'
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
+
+CREATE TABLE products (
+  id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  name VARCHAR(60) NOT NULL,
+  description TEXT NOT NULL,
+  price DECIMAL(10,2) NOT NULL,
+  category VARCHAR(300) NOT NULL,
+  brand VARCHAR(50)NOT NULL,
+  stock INT NOT NULL
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;

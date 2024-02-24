@@ -7,10 +7,19 @@ exports.login = async (req, res) => {
 
   try {
     const authService = new AuthService(email, password);
-    const token = await authService.init();
+    const tokens = await authService.init();
 
-    res.status(200).json({ token });
+    res.status(200).json({
+      data: {
+        accessToken: tokens.accessToken,
+        refreshToken: tokens.refreshToken,
+      },
+    });
   } catch (error) {
-    res.status(401).json({ message: error.message });
+    return res.status(401).json({
+      data: {
+        message: error.message,
+      },
+    });
   }
 };

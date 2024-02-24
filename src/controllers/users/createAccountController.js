@@ -6,13 +6,13 @@ exports.createAccount = async (req, res) => {
     name, email, password, confirmPassword,
   } = req.body;
 
-  if (!name, !email, !password, !confirmPassword) throw new Error('All fields are mandatory.');
+  if (!name, !email, !password, !confirmPassword) return res.status(400).json({ data: { message: 'All fields are mandatory.' } });
 
   try {
     const searchUser = new SearchUser(email);
     const user = await searchUser.find();
 
-    if (user) return res.status(400).json({ message: 'User already exists.' });
+    if (user) return res.status(400).json({ data: { message: 'User already exists.' } });
 
     const createAccount = new CreateAccount(name, email, password, confirmPassword);
 
@@ -21,6 +21,10 @@ exports.createAccount = async (req, res) => {
       notice: 'Please ensure that the email address you provide is correct and accessible. This email is crucial for receiving important information related to your account.',
     });
   } catch (error) {
-    res.status(401).json({ message: error.message });
+    return res.status(401).json({
+      data: {
+        message: error.message,
+      },
+    });
   }
 };

@@ -58,8 +58,12 @@ AuthService.prototype.generateToken = async function () {
     if (!comparePassword) {
       throw new Error('Incorrect password.');
     } else {
-      const token = jwt.sign({ id: user.id }, process.env.SECRET_KEY, { expiresIn: 300 });
-      return token;
+      const tokens = {
+        accessToken: jwt.sign({ id: user.id }, process.env.SECRET_KEY, { expiresIn: 300 }),
+        refreshToken: jwt.sign({ id: user.id }, process.env.SECRET_KEY, { expiresIn: 1200 }),
+      };
+
+      return tokens;
     }
   }
 };

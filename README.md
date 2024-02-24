@@ -7,6 +7,7 @@ Este é meu projeto pessoal como freelancer, onde a API cuida do gerenciamento d
 - [Endpoints](#endpoints)
 - [Requisitos](#requisitos)
 - [Configuração](#configuração)
+- [Autenticação](#autenticação)
 - [Contribuição](#contribuição)
 
 ## Endpoints
@@ -75,6 +76,55 @@ Preencha as variáveis acima de acordo com os dados do seu inbox no Mailtrap, do
 Certifique-se de ter um servidor MySQL instalado. Se ainda não tiver, você pode baixá-lo [aqui](https://dev.mysql.com/downloads/mysql/).
 
 - Execute o script SQL fornecido na pasta database para criar as tabelas necessárias.
+
+## Autenticação
+
+### 1. Login do Usuário
+
+Autentica um usuário e retorna dois tokens: um para acesso e outro para renovação.
+
+- Endpoint: `POST /users/login`
+- Parâmetros da Requisição:
+  - `email` (string): Email do usuário.
+  - `password` (string): Senha do usuário.
+
+- Resposta de Sucesso (Status 200 OK):
+
+```json
+{
+  "data": {
+    "accessToken": "token_de_acesso",
+    "refreshToken": "token_de_renovacao"
+  }
+}
+```
+
+### 2. Renovação de Tokens
+
+Renova os tokens de acesso e renovação.
+
+- Endpoint: `POST /token/refresh`
+- Parâmetros da Requisição:
+  - `refreshToken` (string): Token de renovação.
+- Resposta de Sucesso (Status 200 OK):
+
+```json
+{
+  "data": {
+    "newAccessToken": "novo_token_de_acesso",
+    "newRefreshToken": "novo_token_de_renovacao"
+  }
+}
+```
+
+### 3. Gerenciamento de Tokens no Frontend
+
+1. Login do Usuário:
+    - Ao receber a resposta do login, armazene os tokens (accessToken e refreshToken) no localStorage.
+2. Renovação Automática de Tokens:
+    - Configure um temporizador para verificar periodicamente se o token de acesso está prestes a expirar.
+    - Se estiver prestes a expirar, chame o endpoint de renovação de tokens (/api/refresh) com o refreshToken.
+    - Atualize os tokens no localStorage com os novos tokens recebidos na resposta.
 
 ## Contribuição
 

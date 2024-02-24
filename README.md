@@ -12,7 +12,10 @@ Este é meu projeto pessoal como freelancer, onde a API cuida do gerenciamento d
 
 ## Endpoints
 
-- `GET http://localhost:3000/users/create-account`: Rota para criar uma conta para usuários.
+- `POST http://localhost:3000/users/create-account`: Rota para criar uma conta para usuários.
+- `POST http://localhost:3000/users/auth`: Rota para autenticar o usuário.
+- `POST http://localhost:3000/token/refresh`: Rota para renovar token de accesso.
+- `POST http://localhost:3000/products/create`: Rota para criar produtos.
 
 ## Requisitos
 
@@ -83,7 +86,7 @@ Certifique-se de ter um servidor MySQL instalado. Se ainda não tiver, você pod
 
 Autentica um usuário e retorna dois tokens: um para acesso e outro para renovação.
 
-- Endpoint: `POST /users/login`
+- Endpoint: `POST http://localhost:3000/users/auth`
 - Parâmetros da Requisição:
   - `email` (string): Email do usuário.
   - `password` (string): Senha do usuário.
@@ -103,7 +106,7 @@ Autentica um usuário e retorna dois tokens: um para acesso e outro para renova�
 
 Renova os tokens de acesso e renovação.
 
-- Endpoint: `POST /token/refresh`
+- Endpoint: `POST http://localhost:3000/token/refresh`
 - Parâmetros da Requisição:
   - `refreshToken` (string): Token de renovação.
 - Resposta de Sucesso (Status 200 OK):

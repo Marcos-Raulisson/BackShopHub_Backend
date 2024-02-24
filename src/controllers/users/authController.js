@@ -1,6 +1,6 @@
 const AuthService = require('../../services/users/AuthService');
 
-exports.login = async (req, res) => {
+exports.auth = async (req, res) => {
   const { email, password } = req.body;
 
   if (!email || !password) return res.status(400).json({ message: 'All fields are mandatory.' });

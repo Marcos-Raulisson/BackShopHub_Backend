@@ -82,7 +82,7 @@ Certifique-se de ter um servidor MySQL instalado. Se ainda não tiver, você pod
 
 ## Autenticação
 
-### 1. Login do Usuário
+### 1. Autenticar Usuário
 
 Autentica um usuário e retorna dois tokens: um para acesso e outro para renovação.
 
@@ -122,12 +122,22 @@ Renova os tokens de acesso e renovação.
 
 ### 3. Gerenciamento de Tokens no Frontend
 
-1. Login do Usuário:
-    - Ao receber a resposta do login, armazene os tokens (accessToken e refreshToken) no localStorage.
-2. Renovação Automática de Tokens:
+1. **Login do Usuário:**
+    - Ao receber a resposta da autenticação, armazene os tokens (accessToken e refreshToken) no localStorage.
+2. **Renovação Automática de Tokens:**
     - Configure um temporizador para verificar periodicamente se o token de acesso está prestes a expirar.
     - Se estiver prestes a expirar, chame o endpoint de renovação de tokens (/api/refresh) com o refreshToken.
     - Atualize os tokens no localStorage com os novos tokens recebidos na resposta.
+
+3. **Requisições em Rotas Privadas:**
+    - Para acessar rotas privadas que requerem autenticação, inclua o token de acesso no cabeçalho das requisições HTTP.
+    - Adicione o seguinte cabeçalho à sua requisição:
+
+      ```plaintext
+      Authorization: SEU_TOKEN_DE_ACESSO
+      ```
+
+      Certifique-se de substituir `SEU_TOKEN_DE_ACESSO` pelo token real armazenado no localStorage após o login.
 
 ## Contribuição
 

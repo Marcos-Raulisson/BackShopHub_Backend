@@ -126,7 +126,7 @@ Renova os tokens de acesso e renovação.
     - Ao receber a resposta da autenticação, armazene os tokens (accessToken e refreshToken) no localStorage.
 2. **Renovação Automática de Tokens:**
     - Configure um temporizador para verificar periodicamente se o token de acesso está prestes a expirar.
-    - Se estiver prestes a expirar, chame o endpoint de renovação de tokens (/api/refresh) com o refreshToken.
+    - Se estiver prestes a expirar, chame o endpoint de renovação de tokens (/token/refresh) com o refreshToken.
     - Atualize os tokens no localStorage com os novos tokens recebidos na resposta.
 
 3. **Requisições em Rotas Privadas:**

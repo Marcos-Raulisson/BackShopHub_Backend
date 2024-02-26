@@ -11,7 +11,7 @@ SearchUser.prototype = Object.create(Database.prototype);
 SearchUser.prototype.find = async function () {
   const connection = await this.openConnection();
   try {
-    const sql = 'select * from user_profile where email = ?';
+    const sql = 'SELECT * FROM user_profile WHERE email = ?';
     const [rows] = await connection.execute(sql, [this.email]);
     if (!rows.length > 0) {
       return false;

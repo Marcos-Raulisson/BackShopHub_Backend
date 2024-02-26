@@ -69,9 +69,9 @@ CreateAccount.prototype.registerAccount = function () {
     this.createPasswordHash(this.password),
   ];
 
-  const nodemailer = new Nodemailer(this.name, this.email, 'Boas vindas', `Saudações, ${this.name}, É um prazer recebê-lo(a) como nosso cliente. Esperamos que tenha uma experiência incrível com os nossos serviços e produtos.`);
-
   const registerAccount = new RegisterAccount(account);
+
+  const nodemailer = new Nodemailer(this.name, this.email, 'Boas vindas', `Saudações, ${this.name}, É um prazer recebê-lo(a) como nosso cliente. Esperamos que tenha uma experiência incrível com os nossos serviços e produtos.`);
 };
 
 module.exports = CreateAccount;

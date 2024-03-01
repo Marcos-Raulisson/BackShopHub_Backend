@@ -29,5 +29,6 @@ module.exports = {
     'no-else-return': 'off',
     'consistent-return': 'off',
     'no-unused-vars': 'off',
+    'max-len': 'off',
   },
 };

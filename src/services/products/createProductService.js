@@ -1,6 +1,6 @@
 const RegisterProduct = require('../../models/products/CreateProductModel');
 
-function CreateProduct(name, description, price, category, brand, stock) {
+function CreateProduct(name, description, price, category, brand, stock, image) {
   this.product = [
     this.name = name,
     this.description = description,

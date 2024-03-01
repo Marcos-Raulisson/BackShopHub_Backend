@@ -6,7 +6,9 @@ exports.createAccount = async (req, res) => {
     name, email, password, confirmPassword,
   } = req.body;
 
-  if (!name, !email, !password, !confirmPassword) return res.status(400).json({ data: { message: 'All fields are mandatory.' } });
+  if (!name, !email, !password, !confirmPassword) {
+    return res.status(400).json({ data: { message: 'All fields are mandatory.' } });
+  }
 
   try {
     const searchUser = new SearchUser(email);

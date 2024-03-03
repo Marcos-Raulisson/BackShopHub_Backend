@@ -15,6 +15,11 @@ function StartServer() {
     mail_user: process.env.MAIL_USER,
     mail_pass: process.env.MAIL_PASS,
     mail_from: process.env.MAIL_FROM,
+    secret_key: process.env.SECRET_KEY,
+    bucket_key: process.env.BUCKET_ID,
+    bucket_name: process.env.BUCKET_NAME,
+    app_key: process.env.APP_KEY,
+    key_id: process.env.KEY_ID,
   };
 
   if (require.main === module) {
@@ -69,5 +74,4 @@ StartServer.prototype.startServerListening = function (port) {
 
 module.exports = StartServer;
 
-// eslint-disable-next-line no-unused-vars
 const startServerInstance = new StartServer();

@@ -1,13 +1,13 @@
 # Visão geral
 
-Este é meu projeto pessoal, onde a API cuida do gerenciamento de produtos, simplifica o checkout, organiza o fluxo do carrinho de compras da loja online e se conecta às APIs Melhor Envio e Pagbank para logística e processamento de pagamento. Eu espero que está documentação ajude você a configurar e executar o projeto em sua máquina. Caso surgir alguma dúvida eu disponibilizei uma seção em Issues que você pode utilizar para sanar todas as suas dúvidas (oﾟvﾟ)ノ.
+Este é meu projeto pessoal chamado Backshophub, ele é uma API que cuida do gerenciamento de produtos, simplifica o checkout, organiza o fluxo do carrinho de compras da loja online e se conecta às APIs Melhor Envio e Pagbank para logística e processamento de pagamento. Eu espero que esta documentação ajude você a configurar e executar o projeto em sua máquina. Caso surgir alguma dúvida eu disponibilizei uma seção em Issues que você pode utilizar para sanar todas as suas dúvidas (oﾟvﾟ)ノ.
 
 ## Sumário
 
 - [Endpoints](#endpoints)
 - [Requisitos](#requisitos)
-- [Configuração](#configuração)
-- [Autenticação](#autenticação)
+- [Configurações do Ambiente](#configurações)
+- [Autenticação do Usuário](#autenticação)
 - [Contribuição](#contribuição)
 
 ## Endpoints
@@ -22,7 +22,7 @@ Este é meu projeto pessoal, onde a API cuida do gerenciamento de produtos, simp
 - Node.js 18.18.0 ou superior
 - MySQL 8.0 ou superior
 
-## Configuração do Ambiente
+## Configurações
 
 Anter de iniciar o projeto, siga as instruções abaixo para configurar o ambiente.
 
@@ -124,7 +124,7 @@ KEY_ID=
 
 Preencha as variáveis acima de acordo com os dados do seu inbox no Mailtrap, do seu banco de dados e do seu Bucket da sua conta Backblaze. Configure uma senha para assinar e verificar tokens JWT em **SECRET_KEY** (Pode ser qualquer senha da sua preferência, mas eu recomendo que seja uma senha forte).
 
-## Autenticação do Usuário
+## Autenticação
 
 ### 1. Autenticar
 

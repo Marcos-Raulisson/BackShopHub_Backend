@@ -22,7 +22,7 @@ Este é meu projeto pessoal como freelancer, onde a API cuida do gerenciamento d
 - Node.js 18.18.0 ou superior
 - MySQL 8.0 ou superior
 
-## Configuração
+## Configuração do Ambiente
 
 Anter de iniciar o projeto, siga as instruções abaixo para configurar o ambiente.
 
@@ -63,7 +63,7 @@ Anote as seguintes informações do seu Bucket:
 - `APP_KEY`: Chave de aplicação.
 - `KEY_ID`: Id da chave de aplicação.
 
-### 4. Configurar o Arquivo `.env`
+### 4. Configuração do Arquivo `.env`
 
 Crie um arquivo .env na raiz do projeto e preencha as variáveis de ambiente com as informações do Mailtrap e do banco de dados:
 
@@ -88,7 +88,6 @@ MAIL_FROM= # Email remetente
 SECRET_KEY=
 
 # Configurações da Backblaze B2
-
 BUCKET_ID=
 BUCKET_NAME=
 APP_KEY=
@@ -97,15 +96,31 @@ KEY_ID=
 
 Preencha as variáveis acima de acordo com os dados do seu inbox no Mailtrap, do seu banco de dados e do seu Bucket da sua conta Backblaze. Configure uma senha para assinar e verificar tokens JWT em **SECRET_KEY** (Pode ser qualquer senha da sua preferência, mas eu recomendo que seja uma senha forte).
 
-### 5. Configurar o banco de dados
+### 5. Configuração do Banco de Dados com Docker
 
-Certifique-se de ter um servidor MySQL instalado. Se ainda não tiver, você pode baixá-lo [aqui](https://dev.mysql.com/downloads/mysql/).
+Certifique-se de ter o Docker instalado em sua máquina. Se ainda não tiver, você pode baixá-lo [aqui](https://www.docker.com/get-started).
 
-- Execute o script SQL fornecido na pasta database para criar as tabelas necessárias.
+- Execute o seguinte comando para baixar a imagem do MySQL (se ainda não a tiver) e criar um contêiner MySQL:
 
-## Autenticação
+```bash
+docker pull mysql:8.0
+docker run -d \
+  --name=backshophub-mysql \
+  -e MYSQL_ROOT_PASSWORD=mysecretpassword \
+  -e MYSQL_DATABASE=backshophub \
+  -e MYSQL_USER=root \
+  -e MYSQL_PASSWORD=mysecretpassword \
+  -p 3306:3306 \
+  mysql:8.0
+```
 
-### 1. Autenticar Usuário
+Este comando baixará a imagem do MySQL (se ainda não estiver baixada) e criará um contêiner MySQL com as configurações especificadas. Certifique-se de ajustar as variáveis conforme necessário.
+
+Lembre-se de atualizar as configurações do .env com as informações do seu banco de dados MySQL.
+
+## Autenticação do Usuário
+
+### 1. Autenticar
 
 Autentica um usuário e retorna dois tokens: um para acesso e outro para renovação.
 

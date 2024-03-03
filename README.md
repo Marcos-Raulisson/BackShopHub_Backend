@@ -51,6 +51,8 @@ Lembre-se de atualizar as configurações do .env com as informações do seu in
 
 ### 3. Criar uma conta na Backblaze
 
+A BackShopHub API utiliza o serviço Backblaze para armazenar imagens dos usuários. Siga as etapas abaixo para criar uma conta na Backblaze:
+
 - Acesse o site da [Backblaze](https://www.backblaze.com/).
 - Clique em "Get Started" para criar uma nova conta.
 - Preencha as informações necessárias e siga as instruções para verificar sua conta.

@@ -47,7 +47,23 @@ Anote as seguintes informações do seu inbox no Mailtrap:
 - `MAIL_USER`: Nome de usuário para autenticação no servidor SMTP.
 - `MAIL_PASS`: Senha para autenticação no servidor SMTP.
 
-### 3. Configurar o Arquivo `.env`
+### 3. Criar uma conta na Backblaze
+
+- Acesse o site da [Backblaze](https://www.backblaze.com/).
+- Clique em "Get Started" para criar uma nova conta.
+- Preencha as informações necessárias e siga as instruções para verificar sua conta.
+- Faça login na sua conta da Backblaze.
+- No painel, vá para "Buckets" e clique em "Create a Bucket".
+- Siga as instruções para configurar seu novo bucket.
+
+Anote as seguintes informações do seu Bucket:
+
+- `BUCKET_ID`: Id do bucket.
+- `BUCKET_NAME`: Nome do Bucket.
+- `APP_KEY`: Chave de aplicação.
+- `KEY_ID`: Id da chave de aplicação.
+
+### 4. Configurar o Arquivo `.env`
 
 Crie um arquivo .env na raiz do projeto e preencha as variáveis de ambiente com as informações do Mailtrap e do banco de dados:
 
@@ -70,11 +86,18 @@ MAIL_FROM= # Email remetente
 
 # Senha para assinar e verificar tokens JWT
 SECRET_KEY=
+
+# Configurações da Backblaze B2
+
+BUCKET_ID=
+BUCKET_NAME=
+APP_KEY=
+KEY_ID=
 ```
 
-Preencha as variáveis acima de acordo com os dados do seu inbox no Mailtrap, do seu banco de dados e configure uma senha para assinar e verificar tokens JWT.
+Preencha as variáveis acima de acordo com os dados do seu inbox no Mailtrap, do seu banco de dados e do seu Bucket da sua conta Backblaze. Configure uma senha para assinar e verificar tokens JWT em **SECRET_KEY** (Pode ser qualquer senha da sua preferência, mas eu recomendo que seja uma senha forte).
 
-### 4. Configurar o banco de dados
+### 5. Configurar o banco de dados
 
 Certifique-se de ter um servidor MySQL instalado. Se ainda não tiver, você pode baixá-lo [aqui](https://dev.mysql.com/downloads/mysql/).
 

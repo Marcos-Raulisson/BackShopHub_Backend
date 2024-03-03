@@ -47,6 +47,8 @@ Anote as seguintes informações do seu inbox no Mailtrap:
 - `MAIL_USER`: Nome de usuário para autenticação no servidor SMTP.
 - `MAIL_PASS`: Senha para autenticação no servidor SMTP.
 
+Lembre-se de atualizar as configurações do .env com as informações seu inbox Mailtrap.
+
 ### 3. Criar uma conta na Backblaze
 
 - Acesse o site da [Backblaze](https://www.backblaze.com/).
@@ -63,40 +65,9 @@ Anote as seguintes informações do seu Bucket:
 - `APP_KEY`: Chave de aplicação.
 - `KEY_ID`: Id da chave de aplicação.
 
-### 4. Configuração do Arquivo `.env`
+Lembre-se de atualizar as configurações do .env com as informações Bucket.
 
-Crie um arquivo .env na raiz do projeto e preencha as variáveis de ambiente com as informações do Mailtrap e do banco de dados:
-
-```ini
-# porta em que o servidor será executado
-SERVER_PORT=3000
-
-# Configurações do Banco de Dados
-DATABASE_HOST=
-DATABASE_USER=
-DATABASE_PASSWORD=
-DATABASE_NAME=
-
-# Configurações do Servidor SMTP
-MAIL_HOST=
-MAIL_PORT=
-MAIL_USER=
-MAIL_PASS=
-MAIL_FROM= # Email remetente
-
-# Senha para assinar e verificar tokens JWT
-SECRET_KEY=
-
-# Configurações da Backblaze B2
-BUCKET_ID=
-BUCKET_NAME=
-APP_KEY=
-KEY_ID=
-```
-
-Preencha as variáveis acima de acordo com os dados do seu inbox no Mailtrap, do seu banco de dados e do seu Bucket da sua conta Backblaze. Configure uma senha para assinar e verificar tokens JWT em **SECRET_KEY** (Pode ser qualquer senha da sua preferência, mas eu recomendo que seja uma senha forte).
-
-### 5. Configuração do Banco de Dados com Docker
+### 4. Configuração do Banco de Dados com Docker
 
 Certifique-se de ter o Docker instalado em sua máquina. Se ainda não tiver, você pode baixá-lo [aqui](https://www.docker.com/get-started).
 
@@ -117,6 +88,39 @@ docker run -d \
 Este comando baixará a imagem do MySQL (se ainda não estiver baixada) e criará um contêiner MySQL com as configurações especificadas. Certifique-se de ajustar as variáveis conforme necessário.
 
 Lembre-se de atualizar as configurações do .env com as informações do seu banco de dados MySQL.
+
+### 5. Configuração do Arquivo `.env`
+
+Crie um arquivo .env na raiz do projeto e preencha as variáveis de ambiente com as informações do Mailtrap e do banco de dados:
+
+```ini
+# porta em que o servidor será executado
+SERVER_PORT=3000
+
+# Configurações do Banco de Dados
+DATABASE_HOST=
+DATABASE_USER=
+DATABASE_PASSWORD=
+DATABASE_NAME=
+
+# Configurações do inbox Mailtrap
+MAIL_HOST=
+MAIL_PORT=
+MAIL_USER=
+MAIL_PASS=
+MAIL_FROM= # Email remetente
+
+# Senha para assinar e verificar tokens JWT
+SECRET_KEY=
+
+# Configurações da Backblaze B2
+BUCKET_ID=
+BUCKET_NAME=
+APP_KEY=
+KEY_ID=
+```
+
+Preencha as variáveis acima de acordo com os dados do seu inbox no Mailtrap, do seu banco de dados e do seu Bucket da sua conta Backblaze. Configure uma senha para assinar e verificar tokens JWT em **SECRET_KEY** (Pode ser qualquer senha da sua preferência, mas eu recomendo que seja uma senha forte).
 
 ## Autenticação do Usuário
 

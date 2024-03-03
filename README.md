@@ -47,7 +47,7 @@ Anote as seguintes informações do seu inbox no Mailtrap:
 - `MAIL_USER`: Nome de usuário para autenticação no servidor SMTP.
 - `MAIL_PASS`: Senha para autenticação no servidor SMTP.
 
-Lembre-se de atualizar as configurações do .env com as informações seu inbox Mailtrap.
+Lembre-se de atualizar as configurações do .env com as informações do seu inbox Mailtrap.
 
 ### 3. Criar uma conta na Backblaze
 
@@ -65,7 +65,7 @@ Anote as seguintes informações do seu Bucket:
 - `APP_KEY`: Chave de aplicação.
 - `KEY_ID`: Id da chave de aplicação.
 
-Lembre-se de atualizar as configurações do .env com as informações Bucket.
+Lembre-se de atualizar as configurações do .env com as informações do seu Bucket.
 
 ### 4. Configuração do Banco de Dados com Docker
 
@@ -85,7 +85,7 @@ docker run -d \
   mysql:8.0
 ```
 
-Este comando baixará a imagem do MySQL (se ainda não estiver baixada) e criará um contêiner MySQL com as configurações especificadas. Certifique-se de ajustar as variáveis conforme necessário.
+Este comando baixará a imagem do MySQL (se ainda não estiver baixada) e criará um contêiner MySQL com as configurações especificadas. Certifique-se de ajustar as variáveis conforme necessário, e execute o `script.sql` que eu disponibilizei na pasta database para criar as entidades nescessárias para o projeto.
 
 Lembre-se de atualizar as configurações do .env com as informações do seu banco de dados MySQL.
 

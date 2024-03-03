@@ -1,4 +1,4 @@
-const CreateProduct = require('../../services/products/createProductService');
+const CreateProduct = require('../../services/products/CreateProductService');
 
 exports.create = (req, res) => {
   const {

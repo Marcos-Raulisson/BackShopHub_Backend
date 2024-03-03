@@ -8,6 +8,6 @@ const updateProductController = require('../../controllers/products/updateProduc
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-router.post('/products/update', upload.single('file'), updateProductController.update);
+router.put('/products/update', upload.single('file'), updateProductController.update);
 
 module.exports = router;

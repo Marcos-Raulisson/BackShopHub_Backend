@@ -1,6 +1,6 @@
 const B2 = require('backblaze-b2');
 
-const SearchProduct = require('../../models/products/SearchProductModel');
+const CheckProduct = require('../../models/products/CheckProductModel');
 
 function UpdateProduct(id, name, image, description, price, category, brand, stock) {
   this.product = [
@@ -18,7 +18,7 @@ function UpdateProduct(id, name, image, description, price, category, brand, sto
 }
 
 UpdateProduct.prototype.updateProduct = function () {
-  const searchProduct = new SearchProduct(this.product[0]);
+  const checkProduct = new CheckProduct(this.product[0]);
 };
 
 UpdateProduct.prototype.updateImage = function () {
@@ -26,6 +26,5 @@ UpdateProduct.prototype.updateImage = function () {
 
 UpdateProduct.prototype.deleteImage = function () {
 };
-
 
 module.exports = UpdateProduct;

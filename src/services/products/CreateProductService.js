@@ -17,10 +17,13 @@ function CreateProduct(name, image, description, price, category, brand, stock) 
 }
 
 CreateProduct.prototype.create = async function () {
+  const uploadedImage = await this.uploadImage();
+
   try {
     const product = [
       this.name,
-      await this.uploadImage(),
+      uploadedImage.url,
+      uploadedImage.id,
       this.description,
       this.price,
       this.category,
@@ -57,7 +60,7 @@ CreateProduct.prototype.uploadImage = async function () {
 
   const url = `${downloadUrl}/file/${process.env.BUCKET_NAME}/${params.fileName}`;
 
-  return url;
+  return { url, id: fileInfo.data.fileId };
 };
 
 module.exports = CreateProduct;

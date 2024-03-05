@@ -2,7 +2,7 @@ const UpdateProduct = require('../../services/products/UpdateProductService');
 
 exports.update = (req, res) => {
   const {
-    name, description, price, category, brand, stock,
+    id, name, description, price, category, brand, stock,
   } = req.body;
 
   if (!name || !req.file || !description || !price || !category || !brand || !stock) {
@@ -10,7 +10,7 @@ exports.update = (req, res) => {
   }
 
   try {
-    const updateProduct = new UpdateProduct(name, req.file, description, price, category, brand, stock);
+    const updateProduct = new UpdateProduct(id, name, req.file, description, price, category, brand, stock);
   } catch (error) {
     return res.status(400).json({ data: { message: error.message } });
   }

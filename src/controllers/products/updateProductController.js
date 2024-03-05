@@ -1,6 +1,6 @@
 const UpdateProduct = require('../../services/products/UpdateProductService');
 
-exports.update = (req, res) => {
+exports.update = async (req, res) => {
   const {
     id, name, description, price, category, brand, stock,
   } = req.body;
@@ -11,6 +11,7 @@ exports.update = (req, res) => {
 
   try {
     const updateProduct = new UpdateProduct(id, name, req.file, description, price, category, brand, stock);
+    await updateProduct.updateProduct();
   } catch (error) {
     return res.status(400).json({ data: { message: error.message } });
   }

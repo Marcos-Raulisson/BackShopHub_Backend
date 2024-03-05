@@ -4,8 +4,6 @@ function SearchProduct(id) {
   Database.call(this);
 
   this.id = id;
-
-  this.find();
 }
 
 SearchProduct.prototype = Object.create(Database.prototype);
@@ -16,12 +14,14 @@ SearchProduct.prototype.find = async function () {
     const sql = 'SELECT * FROM products WHERE id = ?';
     const [rows] = await connection.execute(sql, [this.id]);
     if (!rows.length > 0) {
-      console.log('Produto não existe');
+      return false;
     } else {
-      console.log('Produto existe');
+      return rows[0];
     }
   } catch (error) {
     console.log(error);
+  } finally {
+    this.releaseConnection(connection);
   }
 };
 

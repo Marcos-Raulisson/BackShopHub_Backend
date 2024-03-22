@@ -4,6 +4,7 @@ const createAccountRoute = require('../routes/users/createAccountRoute');
 const loginRoute = require('../routes/users/authRoute');
 const createProductRoute = require('../routes/products/createProductRoute');
 const updateProductRoute = require('../routes/products/updateProductRoute');
+const deleteProductRoute = require('../routes/products/deleteProductRoute');
 const renewTokenRoute = require('../routes/renewTokenRoute');
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(createAccountRoute);
 app.use(loginRoute);
 app.use(createProductRoute);
 app.use(updateProductRoute);
+app.use(deleteProductRoute);
 app.use(renewTokenRoute);
 
 module.exports = app;

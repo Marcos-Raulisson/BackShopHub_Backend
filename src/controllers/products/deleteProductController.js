@@ -1,4 +1,4 @@
-const DeleteProductModel = require('../../models/products/DeleteProductModel');
+const DeleteProduct = require('../../services/products/DeleteProductService');
 
 exports.delete = async (req, res) => {
   const { id } = req.params;
@@ -8,10 +8,14 @@ exports.delete = async (req, res) => {
   }
 
   try {
-    const deleteProduct = new DeleteProductModel(id);
+    const deleteProduct = new DeleteProduct(id);
     await deleteProduct.delete();
   } catch (error) {
-    return res.status(404).json({ data: { message: 'The product could not be deleted.' } });
+    if (error.message) {
+      return res.status(404).json({ data: { message: error.message } });
+    } else {
+      return res.status(404).json({ data: { message: 'The product could not be deleted.' } });
+    }
   }
 
   res.status(200).json({ data: { message: 'Product deleted.' } });

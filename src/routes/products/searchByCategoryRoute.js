@@ -4,6 +4,6 @@ const router = express.Router();
 
 const searchByCategoryController = require('../../controllers/products/searchByCategoryController');
 
-router.get('/products/:category', searchByCategoryController.searchByCategory);
+router.get('/products/category/:category', searchByCategoryController.searchByCategory);
 
 module.exports = router;

@@ -16,7 +16,6 @@ SearchByCategory.prototype.search = async function () {
     if (!rows.length > 0) {
       return false;
     } else {
-      console.log(rows);
       return rows;
     }
   } catch (error) {

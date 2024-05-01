@@ -1,6 +1,6 @@
 const CreateAssessments = require('../../services/productsAssessments/createAssessmentsService');
 
-exports.assessment = (req, res) => {
+exports.assessment = async (req, res) => {
   const {
     productId, userId, text, stars,
   } = req.body;
@@ -11,9 +11,10 @@ exports.assessment = (req, res) => {
 
   try {
     const createAssessment = new CreateAssessments(productId, userId, text, stars);
-    createAssessment.create();
+    await createAssessment.create();
   } catch (error) {
     console.error(error);
+    return res.status(500).json({ data: { message: 'Internal Server Error.' } });
   }
 
   res.status(200).json({ data: { message: 'Okay.' } });

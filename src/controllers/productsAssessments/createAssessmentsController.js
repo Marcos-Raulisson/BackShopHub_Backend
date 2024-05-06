@@ -1,4 +1,4 @@
-const CreateAssessments = require('../../services/productsAssessments/createAssessmentsService');
+const CreateAssessments = require('../../services/productsAssessments/CreateAssessmentsService');
 
 exports.assessment = async (req, res) => {
   const {

@@ -34,7 +34,7 @@ CREATE TABLE avaliation (
   user_id INT NOT NULL,
   product_id INT NOT NULL,
   review TEXT,
-  stars INT
+  stars INT,
   FOREIGN KEY (user_id) REFERENCES user_profile(id),
   FOREIGN KEY (product_id) REFERENCES products(id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;

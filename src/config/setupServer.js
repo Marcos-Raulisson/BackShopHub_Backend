@@ -9,6 +9,7 @@ const deleteProductRoute = require('../routes/products/deleteProductRoute');
 const searchAllProductsRoute = require('../routes/products/searchAllProductsRoute');
 const searchByCategoryRoute = require('../routes/products/searchByCategoryRoute');
 const createAssessmentRoute = require('../routes/productsAssessments/createAssessmentRoute');
+const addPhotoToAssessments = require('../routes/productsAssessments/addPhotoToAssessmentsRoute');
 
 const app = express();
 
@@ -24,5 +25,6 @@ app.use(deleteProductRoute);
 app.use(searchAllProductsRoute);
 app.use(searchByCategoryRoute);
 app.use(createAssessmentRoute);
+app.use(addPhotoToAssessments);
 
 module.exports = app;

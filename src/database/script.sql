@@ -42,6 +42,8 @@ CREATE TABLE avaliation (
 CREATE TABLE photoAvaliation (
   id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   avaliation_id INT NOT NULL,
-  photo VARCHAR(255),
+  image varchar(255),
+  image_id varchar(255),
+  image_filename varchar(255),
   FOREIGN KEY (avaliation_id) REFERENCES avaliation(id)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;

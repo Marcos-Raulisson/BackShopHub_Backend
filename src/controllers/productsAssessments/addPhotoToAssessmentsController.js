@@ -2,13 +2,13 @@ const AddPhotoToAssessmentsService = require('../../services/productsAssessments
 
 exports.addPhoto = async (req, res) => {
   const { file } = req;
-
-  if (!file) return res.status(400).json({ data: { message: "It looks like you didn't upload an image to add it to the assessment." } });
+  const { avaliationId } = req.body;
 
   try {
-    const addPhotoToAssessmentsService = new AddPhotoToAssessmentsService(file);
+    const addPhotoToAssessmentsService = new AddPhotoToAssessmentsService(avaliationId, file);
     await addPhotoToAssessmentsService.addPhoto();
   } catch (error) {
+    console.error(error);
     return res.status(500).json({ data: { message: 'Internal Server Error' } });
   }
 

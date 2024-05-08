@@ -1,4 +1,4 @@
-const CreateAssessmentModel = require('../../models/productsAssessments/createAssessmentsModel');
+const CreateAssessmentModel = require('../../models/productsAssessments/CreateAssessmentsModel');
 
 function CreateAssessments(productId, userId, text, stars) {
   this.productId = productId;

@@ -1,12 +1,21 @@
 require('dotenv').config();
-
 const B2 = require('backblaze-b2');
 
-function AddPhotoToAssessments(file) {
+const AddPhotoToAssessmentsModel = require('../../models/productsAssessments/AddPhotoToAssessmentsModel');
+
+function AddPhotoToAssessments(avaliationId, file) {
+  this.avaliationId = avaliationId;
   this.image = file;
 }
 
 AddPhotoToAssessments.prototype.addPhoto = async function () {
+  const upload = await this.uploadImage();
+  const addPhotoToAssessmentsModel = new AddPhotoToAssessmentsModel(this.avaliationId, upload.url, upload.id, upload.fileName);
+
+  await addPhotoToAssessmentsModel.add();
+};
+
+AddPhotoToAssessments.prototype.uploadImage = async function () {
   const b2 = new B2({
     applicationKeyId: process.env.KEY_ID,
     applicationKey: process.env.APP_KEY,

@@ -26,7 +26,7 @@ Este é meu projeto pessoal chamado Backshophub, ele é uma API que cuida do ger
 - `PUT 'http://localhost:3000/products/update`: Rota para atualizar produtos.
 - `DELETE http://localhost:3000/products/delete/:id`: Rota para deletar um produto.
 - `POST http://localhost:3000/products/assessment`: Rota para criar avaliações de produtos.
-- `POST http://localhost:3000//products/assessment/addPhoto`: Rota para adicionar fotos em avaliações de produtos.
+- `POST http://localhost:3000//products/assessment/addPhoto`: Rota para adicionar fotos em avaliações.
 
 
 ## Requisitos

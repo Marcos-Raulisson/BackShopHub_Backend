@@ -13,7 +13,7 @@ AddPhotoToAssessments.prototype = Object.create(Database.prototype);
 
 AddPhotoToAssessments.prototype.add = async function () {
   const connection = await this.openConnection();
-  try { 
+  try {
     const sql = 'INSERT INTO photoAvaliation (avaliation_id, image, image_id, image_filename) VALUES (?, ?, ?, ?)';
     await connection.execute(sql, [this.avaliationId, this.image, this.imageId, this.imageFilename]);
   } catch (error) {

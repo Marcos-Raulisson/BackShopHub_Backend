@@ -12,10 +12,22 @@ Este é meu projeto pessoal chamado Backshophub, ele é uma API que cuida do ger
 
 ## Endpoints
 
+### Publicos
+
 - `POST http://localhost:3000/users/create-account`: Rota para criar uma conta para usuários.
 - `POST http://localhost:3000/users/auth`: Rota para autenticar o usuário.
+- `GET http://localhost:3000/products`: Rota para listar todos os produtos.
+- `GET http://localhost:3000/products/category/:category`: Rota para listar produtos por categorias.
+
+### privados
+
 - `POST http://localhost:3000/token/refresh`: Rota para renovar token de accesso.
 - `POST http://localhost:3000/products/create`: Rota para criar produtos.
+- `PUT 'http://localhost:3000/products/update`: Rota para atualizar produtos.
+- `DELETE http://localhost:3000/products/delete/:id`: Rota para deletar um produto.
+- `POST http://localhost:3000/products/assessment`: Rota para criar avaliações de produtos.
+- `POST http://localhost:3000//products/assessment/addPhoto`: Rota para adicionar fotos em avaliações de produtos.
+
 
 ## Requisitos
 
@@ -182,6 +194,310 @@ Renova os tokens de acesso e renovação.
       ```
 
       Certifique-se de substituir `SEU_TOKEN_DE_ACESSO` pelo token real armazenado no localStorage após o login.
+
+## Como realizar solicitações para as rotas
+
+Abaixo, são fornecidos exemplos de como fazer solicitações para cada endpoint disponível.
+
+### Criar uma conta de usuário
+
+Para criar uma conta de usuário, faça uma solicitação POST para o endpoint `/users/create-account`, incluindo os seguintes parâmetros no corpo da solicitação:
+
+- `name` (string): O nome do usuário.
+- `email` (string): O email do usuário.
+- `password` (string): A senha do usuário.
+- `confirmPasword` (string) A confirmação da senha do usuário.
+
+Exemplo de solicitação usando `fetchAPI`:
+
+```javascript
+async function createUserAccount(name, email, password, confirmPassword) {
+  try {
+    const response = await fetch('http://localhost:3000/users/create-account', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, email, password, confirmPassword })
+    });
+
+    const data = await response.json();
+    console.log('Server response:', data);
+    return data;
+  } catch (error) {
+    console.error('Error creating user account:', error);
+  }
+}
+```
+
+### Autenticar um usuário
+
+Para autenticar um usuário, faça uma solicitação POST para o endpoint `/users/auth`, incluindo os seguintes parâmetros no corpo da solicitação:
+
+- `email` (string) O email de acesso do usuário.
+- `password` (string) A senha de acesso do usuário.
+
+Exemplo de solicitação usando `fetchAPI`:
+
+```javascript
+async function AuthenticateUser(email, password) {
+  try {
+    const response = await fetch('http://localhost:3000/users/auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ email, password})
+    });
+
+    const data = await response.json();
+    console.log('Server response:', data);
+    return data;
+  } catch (error) {
+    console.error('Error authenticating user:', error);
+  }
+}
+```
+
+### Renovar tokens de acesso
+
+Para renovar tokens de acesso, faça uma solicitação POST para o endpoint `/token/refresh`, incluindo os seguintes parâmetro no corpo da requisição:
+
+- `refreshToken` (string) O token de renovação do usuário.
+
+Exemplo de solicitação usando `fetchAPI`:
+
+```javascript
+async function renewToken(refreshToken) {
+  try {
+    const response = await fetch('http://localhost:3000/token/refresh', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ refreshToken })
+    });
+
+    const data = await response.json();
+    console.log('Server response:', data);
+    return data;
+  } catch (error) {
+    console.error('Error renewing access tokens:', error);
+  }
+}
+```
+
+### Criar um produto
+
+Para criar um produto, faça uma solicitação POST para o endpoint `/products/create`, incluindo os seguintes parâmetros  no corpo da requisição:
+
+- `name` (string) Nome do produto.
+- `description` (string) Descrição do produto.
+- `price` (string) Preço para o produto.
+- `category` (string) Categoria do produto.
+- `brand` (string) Marca do produto.
+- `stock` (string) Estoque do produto.
+
+Exemplo de solicitação usando `fetchAPI`:
+
+```javascript
+async function createProduct(name, file, description, price, category, brand, stock) {
+  try {
+    const response = await fetch('http://localhost:3000/products/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': 'Seu token de autorização aqui',
+      },
+      body: JSON.stringify({ name, file, description, price, category, brand, stock, })
+    });
+
+    const data = await response.json();
+    console.log('Server response:', data);
+    return data;
+  } catch (error) {
+    console.error('Error creating product:', error);
+  }
+}
+```
+
+### Atualizar um produto
+
+Para atualizar um produto, faça uma solicitação PUT para o endpoint `/products/update`, incluindo os seguintes parâmetros  no corpo da requisição:
+
+- `name` (string) Nome do produto.
+- `description` (string) Descrição do produto.
+- `price` (string) Preço para o produto.
+- `category` (string) Categoria do produto.
+- `brand` (string) Marca do produto.
+- `stock` (string) Estoque do produto.
+
+Exemplo de solicitação usando `fetchAPI`:
+
+```javascript
+async function updateProduct(name, file, description, price, category, brand, stock) {
+  try {
+    const response = await fetch('http://localhost:3000/products/update', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': 'Seu token de autorização aqui',
+      },
+      body: JSON.stringify({ name, file, description, price, category, brand, stock, })
+    });
+
+    const data = await response.json();
+    console.log('Server response:', data);
+    return data;
+  } catch (error) {
+    console.error('Error when updating product:', error);
+  }
+}
+```
+
+### Deletar um produto
+
+Para deletar um produto, faça uma solicitação DELETE para o endpoint `/products/delete/:id`, incluindo os seguintes parâmetros na url:
+
+- `id` (string) ID do produto à ser deletado.
+
+Exemplo de solicitação usando `fetchAPI`:
+
+```javascript
+async function deleteProduct(id) {
+  try {
+    const response = await fetch(`http://localhost:3000/products/delete/:${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': 'Seu token de autorização aqui',
+      },
+    });
+
+    const data = await response.json();
+    console.log('Server response:', data);
+    return data;
+  } catch (error) {
+    console.error('Error deleting product:', error);
+  }
+}
+```
+
+### Listar todos os produtos
+
+Para listar todos os produtos, faça uma solicitação GET para o endpoint `/products`:
+
+Exemplo de solicitação usando `fetchAPI`:
+
+```javascript
+async function listAllProducts() {
+  try {
+    const response = await fetch('http://localhost:3000/products', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+
+    const data = await response.json();
+    console.log('Server response:', data);
+    return data;
+  } catch (error) {
+    console.error('Error listing all products:', error);
+  }
+}
+```
+
+### Listar produtos por categoria
+
+Para listar produtos por categoria, faça uma solicitação GET para o endpoint `/products/category/:category`, incluindo os seguintes parâmetros na url:
+
+- `category` (string) Nome da categoria à ser listada.
+
+Exemplo de solicitação usando `fetchAPI`:
+
+```javascript
+async function listProductsByCategory(category) {
+  try {
+    const response = await fetch(`http://localhost:3000/products/category/:${category}`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+    });
+
+    const data = await response.json();
+    console.log('Server response:', data);
+    return data;
+  } catch (error) {
+    console.error('Error deleting product:', error);
+  }
+}
+```
+
+### Criar avaliação para um produto
+
+Para criar uma avaliação para um produto, faça uma solicitação POST para o endpoint `/products/assessment`, incluindo os seguintes parâmetros no corpo da requisição:
+
+!productId || !userId || !text || !stars
+
+- `productID` (string) ID do produto a ser avaliado.
+- `userId` (string) ID do usuário que está avaliando o produto.
+- `text` (string) Comentário que o usuário.
+- `stars` (string) estrelas que o usuário está dando ao produto.
+
+Exemplo de solicitação usando `fetchAPI`:
+
+```javascript
+async function createAssessment(productID, userId, text, stars) {
+  try {
+    const response = await fetch('http://localhost:3000/products/assessment', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': 'Seu token de autorização aqui',
+      },
+      body: JSON.stringify({ productID, userId, text, stars, }),
+    });
+
+    const data = await response.json();
+    console.log('Server response:', data);
+    return data;
+  } catch (error) {
+    console.error('Error creating assessment:', error);
+  }
+}
+```
+
+### adicionando imagens á avaliações
+
+Para adicionar imagens á avaliações, faça uma solicitação POST para o endpoint `/products/assessment/addPhoto`, incluindo os seguintes parâmetros no corpo da requisição:
+
+- `avaliationId` (string) ID da avaliação.
+- `file` (file) imagem que será adicinada na avaliação.
+
+Exemplo de solicitação usando `fetchAPI`:
+
+```javascript
+async function addPhotoToAssessment(avaliationId, file) {
+  try {
+    const response = await fetch('http://localhost:3000/products/assessment/addPhoto', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'authorization': 'Seu token de autorização aqui',
+      },
+      body: JSON.stringify({ avaliationId, file, }),
+    });
+
+    const data = await response.json();
+    console.log('Server response:', data);
+    return data;
+  } catch (error) {
+    console.error('Error adding image to assessment:', error);
+  }
+}
+```
 
 ## Contribuição
 

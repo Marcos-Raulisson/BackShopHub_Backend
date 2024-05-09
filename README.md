@@ -99,9 +99,22 @@ docker run -d \
   mysql:8.0
 ```
 
-Este comando baixará a imagem do MySQL (se ainda não estiver baixada) e criará um contêiner MySQL com as configurações especificadas. Certifique-se de ajustar as variáveis conforme necessário, e execute o `script.sql` que eu disponibilizei na pasta database para criar as entidades nescessárias para o projeto.
+Este comando baixará a imagem do MySQL (se ainda não estiver baixada) e criará um contêiner MySQL com as configurações especificadas. Certifique-se de ajustar as variáveis conforme necessário.
 
-Lembre-se de atualizar as configurações do .env com as informações do seu banco de dados MySQL.
+### Executar o script SQL para criar as tabelas
+
+Após iniciar o contêiner MySQL, você precisará executar o script SQL fornecido para criar as tabelas necessárias para a aplicação.
+
+- Abra o arquivo `script.sql` localizado na pasta `database`.
+- Copie todo o conteúdo do arquivo `script.sql`.`
+- Abra o terminal ou cliente MySQL e conecte-se ao seu servidor MySQL.
+- Cole o conteúdo do arquivo `script.sql` no terminal ou cliente MySQL e execute-o.
+
+Isso criará as tabelas e definirá a estrutura necessária para o banco de dados da aplicação.
+
+Lembre-se de que este script SQL cria a estrutura do banco de dados e suas tabelas, portanto, deve ser executado apenas uma vez, preferencialmente durante a configuração inicial do ambiente de desenvolvimento ou implantação.
+
+Após seguir estas etapas, seu banco de dados estará configurado e pronto para ser usado com a aplicação. Certifique-se de atualizar as configurações do arquivo `.env` com as informações do seu banco de dados MySQL, conforme mencionado anteriormente na seção de Configurações do Ambiente.
 
 ### 5. Configuração do Arquivo `.env`
 

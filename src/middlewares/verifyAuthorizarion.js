@@ -22,7 +22,7 @@ async function verify(req, res, next) {
       next();
     }
   } catch (error) {
-    return res.status(401).json({ data: { message: 'Invalid authorization token.' } });
+    return res.status(401).json({ data: { message: 'Invalid token.' } });
   }
 }
 

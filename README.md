@@ -149,6 +149,16 @@ KEY_ID=
 
 Preencha as variáveis acima de acordo com os dados do seu inbox no Mailtrap, do seu banco de dados e do seu Bucket da sua conta Backblaze. Configure uma senha para assinar e verificar tokens JWT em **SECRET_KEY** (Pode ser qualquer senha da sua preferência, mas eu recomendo que seja uma senha forte).
 
+### Executar o servidor de desenvolvimento
+
+Após configurar o ambiente e o banco de dados, você pode iniciar o servidor de desenvolvimento. Certifique-se de estar na raiz do projeto e execute o seguinte comando:
+
+```bash
+npm run dev
+```
+
+Isso iniciará o servidor de desenvolvimento Express na porta especificada no arquivo .env e estará pronto para aceitar conexões.
+
 ## Autenticação
 
 ### 1. Autenticar
